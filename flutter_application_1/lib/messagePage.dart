@@ -37,7 +37,7 @@ class _messagePage extends State<messagePage> {
         child: Column(
           children: <Widget> [
             StreamBuilder<QuerySnapshot>(
-                stream: FirebaseHelper().fire_message.snapshots().,
+                stream: FirebaseHelper().fire_message.snapshots(),
                 builder: (context, snapshot) {
                   if(!snapshot.hasData) {
                     return CircularProgressIndicator();
