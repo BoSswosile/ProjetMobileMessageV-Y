@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/functions/FirebaseHelper.dart';
 import 'package:flutter_application_1/functions/string_extension.dart';
 import 'package:flutter_application_1/globalVarialble.dart';
+import 'package:random_string/random_string.dart';
 import 'globalVarialble.dart';
 import 'model/contact_user.dart';
 import 'model/message.dart';
@@ -127,6 +128,7 @@ class _messagePage extends State<messagePage> {
                   onChanged: (value) {
                     setState(() {
                       message = value;
+                      randomId = randing(30);
                     });
                   },
                   autocorrect: true,
