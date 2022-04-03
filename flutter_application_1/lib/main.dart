@@ -161,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: Text("Connexion"),
           ),
-
+          SizedBox(height: 10,),
           InkWell(
             onTap: () {
               Navigator.push(
@@ -169,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 MaterialPageRoute(builder: (context) => register())
               );
             },
-            child: Text("Have a account",
+            child: Text("Don't have an account ?",
               style: TextStyle(color: Colors.orange)
               ,),
           )

@@ -5,6 +5,7 @@ class Message {
   String message = "";
   String uidFrom = "";
   String uidTo = "";
+  String conversationID = "";
   Timestamp? date;
 
   Message.vide();
@@ -13,8 +14,10 @@ class Message {
     id = snapshot.id;
     Map<String, dynamic> map = snapshot.data() as Map<String, dynamic>;
     message = map["MESSAGE"];
-    uidFrom = map["UIDFROME"];
+    uidFrom = map["UIDFROM"];
     uidTo = map["UIDTO"];
+    conversationID = map["CONVERSATIONID"];
     date = map["DATE"];
+
   }
 }

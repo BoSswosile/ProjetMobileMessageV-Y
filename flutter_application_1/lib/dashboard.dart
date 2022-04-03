@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/MyWidgets/menu.dart';
 import 'package:flutter_application_1/contact.dart';
 import 'package:flutter_application_1/globalVarialble.dart';
-
 
 class dashBoard extends StatefulWidget {
   @override
@@ -31,9 +29,9 @@ class dashBoardState extends State<dashBoard> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      drawer: myDrawer(),
       appBar: AppBar(
-        title: Text("Connexion"),
+        backgroundColor: Colors.orange,
+        title: Text("Menu"),
         centerTitle: true,
       ),
       body: bodyPage(),
@@ -47,8 +45,8 @@ class dashBoardState extends State<dashBoard> {
     ),
     bottomNavigationBar: BottomNavigationBar(
     items: [
-    BottomNavigationBarItem(icon: Icon(Icons.account_circle_rounded), label: "Contact"),
-    BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: "Home"),
+    BottomNavigationBarItem(icon: Icon(Icons.person_pin_circle), label: "Contact"),
+    BottomNavigationBarItem(icon: Icon(Icons.account_circle_rounded), label: "Profil"),
     BottomNavigationBarItem(icon: Icon(Icons.message_rounded), label: "Message"),
     ],
     currentIndex: _selectIndex,

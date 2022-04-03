@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_application_1/globalVarialble.dart';
 import 'package:flutter_application_1/model/users.dart';
 
 
@@ -11,6 +12,8 @@ class FirebaseHelper {
   final auth = FirebaseAuth.instance;
   final fire_user = FirebaseFirestore.instance.collection("utilisateur");
   final fire_message = FirebaseFirestore.instance.collection("message");
+  final fire_conversation = FirebaseFirestore.instance.collection("conversation");
+  final fire_userContact = FirebaseFirestore.instance.collection("contactUser");
   final fireStorage = FirebaseStorage.instance;
 
 
@@ -30,17 +33,51 @@ class FirebaseHelper {
   }
 
   Future creationMessage(
-      {required DateTime timestamp, required String message, required String uidFrom, required String uidTo}) async {
+      {required DateTime timestamp, required String message, required String uidFrom, required String uidTo, required String conversation}) async {
     Map<String, dynamic> map = {
       "DATE": timestamp,
       "MESSAGE": message,
-      "UIDFROME": uidFrom,
+      "UIDFROM": uidFrom,
       "UIDTO": uidTo,
     };
-    addConversation(timestamp, map);
+    addConversationUser(uidFrom + uidTo, map);
   }
-  addConversation(DateTime timestamp, Map<String, dynamic> map) {
-    fire_message.doc(timestamp.toString()).set(map);
+
+  Future addConversationMessage(
+      {required DateTime timestamp, required String message, required String uidFrom, required String uidTo, required String conversation}) async {
+    Map<String, dynamic> map = {
+      "DATE": timestamp,
+      "MESSAGE": message,
+      "UIDFROM": uidFrom,
+      "UIDTO": uidTo,
+      "CONVERSATIONID": conversation,
+    };
+    addMessage(randomId, map);
+  }
+
+  Future addContactToUser(
+      {required String prenom, required String nom, required String idContact, required String idContactUser, required String email}
+      ) async {
+    Map<String, dynamic> map = {
+      "IDCONTACTUSER": idContactUser,
+      "PRENOM": prenom,
+      "NOM": nom,
+      "IDCONTACT": idContact,
+      "EMAIL": email,
+    };
+    addContact(randomIdContact, map);
+  }
+
+  addContact(String uidContact, Map<String, dynamic> map) {
+    fire_userContact.doc(uidContact).set(map);
+  }
+
+  addMessage(String uid, Map<String, dynamic> map) {
+    fire_message.doc(uid).set(map);
+  }
+
+  addConversationUser(String uid, Map<String, dynamic> map) {
+    fire_conversation.doc(uid).set(map);
   }
 
   Future connect({required String email, required String password}) async {

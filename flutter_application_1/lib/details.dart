@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'model/contact_user.dart';
 import 'model/users.dart';
 
 class detailsUser extends StatefulWidget {
-  Users user;
-  detailsUser({required Users this.user});
+  late Contact userContact;
+  detailsUser({required Contact this.userContact});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -17,7 +18,7 @@ class detailsUserState extends State<detailsUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("${widget.user.prenom} ${widget.user.nom!}"),
+        title: Text("${widget.userContact.prenom} ${widget.userContact.nom!}"),
         centerTitle: true,
       ),
       body: bodyPage(),
@@ -34,16 +35,15 @@ class detailsUserState extends State<detailsUser> {
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                  image: (widget.user.avatar == null)
+                  image: (widget.userContact.avatar == null)
                       ? NetworkImage("https://mir-s3-cdn-cf.behance.net/project_modules/disp/0f682438923545.5606a0a9ba488.jpg")
-                      : NetworkImage(widget.user.avatar!)
+                      : NetworkImage(widget.userContact.avatar!)
               )
           ),
         ),
-        Text("${widget.user.prenom} ${widget.user.nom}", style: TextStyle(fontSize: 20),),
+        Text("${widget.userContact.prenom} ${widget.userContact.nom}", style: TextStyle(fontSize: 20),),
         SizedBox(height: 20,),
-        Text(widget.user.email, style: TextStyle(),),
-        (widget.user.birthday==null)?Container():Text(widget.user.birthday.toString())
+        Text(widget.userContact.email, style: TextStyle(),),
       ],
     );
   }
