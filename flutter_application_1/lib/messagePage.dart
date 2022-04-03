@@ -128,7 +128,7 @@ class _messagePage extends State<messagePage> {
                   onChanged: (value) {
                     setState(() {
                       message = value;
-                      randomId = randing(30);
+                      randomId = randomString(30);
                     });
                   },
                   autocorrect: true,
