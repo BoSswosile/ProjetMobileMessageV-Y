@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/contact.dart';
+import 'package:flutter_application_1/details.dart';
 import 'package:flutter_application_1/globalVarialble.dart';
 
 class dashBoard extends StatefulWidget {
@@ -15,7 +16,7 @@ class dashBoardState extends State<dashBoard> {
   int _selectIndex = 0;
   final List<Widget> navbar = [
     contact(),
-    Text("${userConnect.email}"),
+    detailsUser(),
     Text("Message"),
   ];
 

@@ -47,7 +47,7 @@ class _contact extends State<contact> {
                           itemBuilder: (context,index){
                             Contact userContact = Contact(documents[index]);
                             return ListTile(
-                              onTap: (){
+                              /*onTap: (){
                                 print(userConnect);
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context){
@@ -55,6 +55,8 @@ class _contact extends State<contact> {
                                     }
                                 ));
                               },
+
+                               */
                               title:Text("${(userContact.prenom).capitalize()}"),
                               trailing: IconButton(onPressed: (){
                                 Navigator.push(context, MaterialPageRoute(builder: (context){

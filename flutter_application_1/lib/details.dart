@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/globalVarialble.dart';
 
 import 'model/contact_user.dart';
 import 'model/users.dart';
 
 class detailsUser extends StatefulWidget {
-  late Contact userContact;
-  detailsUser({required Contact this.userContact});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -17,17 +16,13 @@ class detailsUserState extends State<detailsUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("${widget.userContact.prenom} ${widget.userContact.nom!}"),
-        centerTitle: true,
-      ),
       body: bodyPage(),
     );
   }
 
 
   Widget bodyPage() {
-    return Column(
+    return Center(child: Column(
       children: [
         Container(
           height: 200,
@@ -35,16 +30,17 @@ class detailsUserState extends State<detailsUser> {
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                  image: (widget.userContact.avatar == null)
+                  image: (userConnect.avatar == null)
                       ? NetworkImage("https://mir-s3-cdn-cf.behance.net/project_modules/disp/0f682438923545.5606a0a9ba488.jpg")
-                      : NetworkImage(widget.userContact.avatar!)
+                      : NetworkImage(userConnect.avatar!)
               )
           ),
         ),
-        Text("${widget.userContact.prenom} ${widget.userContact.nom}", style: TextStyle(fontSize: 20),),
+        Text("${userConnect.prenom} ${userConnect.nom}", style: TextStyle(fontSize: 20),),
         SizedBox(height: 20,),
-        Text(widget.userContact.email, style: TextStyle(),),
+        Text(userConnect.email, style: TextStyle(),),
       ],
+    )
     );
   }
 }
